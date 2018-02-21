@@ -1,0 +1,634 @@
+// variables:
+$primary-color: #ff6666
+$primary-color-transparent: #ff6666dc
+$background-color: #EEEEEF
+$text-color: #444547
+$breakpoint-tablet7p: 768px
+$breakpoint-laptopS: 1024px
+$breakpoint-laptopM: 1440px
+$breakpoint-laptopL: 1920px
+
+
+@mixin media($media) 
+  @if $media == tablet7p 
+    @media screen and (min-width: $breakpoint-tablet7p)  
+      @content 
+
+  @else if $media == laptopS 
+    @media screen and (min-width: $breakpoint-laptopS)  
+      @content  
+
+  @else if $media == laptopM
+    @media screen and (min-width: $breakpoint-laptopM)  
+      @content  
+
+  @else if $media == laptopL
+    @media screen and (min-width: $breakpoint-laptopL)  
+      @content   
+
+
+@mixin box_shadow ($level) 
+    @if $level == 1 
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)
+    @else if $level == 2 
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+    @else if $level == 3 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+    @else if $level == 4 
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
+    @else if $level == 5 
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)
+
+
+body
+    font-family: 'Roboto', sans-serif
+    background-color: $background-color
+
+header
+    background-color: $background-color
+    background-image: url("../images/cabecera.png")
+    background-repeat: no-repeat
+    background-size: cover
+    *max-height: 100vh
+    *border: 1px solid red
+    padding-top: 10%
+    display: flex
+    flex-flow: column
+    justify-content: space-between
+    color: white
+    margin-bottom: 2%
+    #simboloMenu
+        *border: 1px solid red
+        width: 12%
+        margin-bottom: 20%
+        margin-left: 4%
+        *position: fixed
+        img
+            width: 95%
+        @include media(tablet7p)
+            width: 8% 
+            margin-bottom: 12%  
+        @include media(laptopS)
+            width: 6%
+            margin-bottom: 10%
+        @include media(laptopM) 
+            width: 5%
+            margin-bottom: 8%
+        @include media(laptopL) 
+            width: 4%
+    #tituloPrincipal
+        color: $primary-color
+        *margin-top: 15%
+        padding-left: 5%
+        margin-bottom: 5%
+        *border: 1px solid red
+        font-size: 1.4rem
+        h1
+            margin: 0px
+            font-weight: normal
+            #nombre
+                display: inline
+                font-weight: bold
+        @include media(tablet7p)
+            font-size: 1.8rem
+            margin-bottom: 3% 
+        @include media(laptopS)
+            margin-bottom: 2%
+            font-size: 2.7rem 
+        @include media(laptopM)       
+            margin-bottom: 1%
+            font-size: 3rem
+        @include media(laptopL)  
+            font-size: 3.4rem
+            padding-left: 8%  
+    #tituloSecundario
+        padding-left: 5%
+        font-size: 0.7rem
+        h2
+            margin: 0px
+            @include media(tablet7p)
+                font-size: 1.8rem
+            @include media(laptopS)
+                font-size: 2rem      
+            @include media(laptopM) 
+                font-size: 2.3rem
+            @include media(laptopL)
+                font-size: 2.5rem
+                padding-left: 3.5%
+    #redesSociales
+        display: flex
+        flex-flow: row
+        justify-content: center
+        margin: 3%
+        margin-bottom: 10%
+        div
+            width: 15%
+            margin: 6% 2%
+            img
+                width: 100%
+            @include media(tablet7p)
+                width: 10%
+                margin: 4% 2%        
+            @include media(laptopS)
+                width: 8%
+                margin: 3% 2%                
+            @include media(laptopM) 
+                width: 6%
+                margin: 2% 1.5%
+            @include media(laptopL)
+                width: 4%
+                margin: 2% 1%
+        @include media(laptopL)
+            margin-bottom: 6% 
+            margin-top: 7%
+
+    #background_shadow
+        z-index: 100
+        position: fixed
+        left: 0%
+        top: 0%
+        width: 100%
+        height: 100vh
+        background: #000000
+        opacity: 0.0
+        visibility: hidden
+        transition: all 0.5s
+    #menuLateral
+        background-color: $primary-color
+        color: white
+        position: fixed
+        left: -100%
+        top: 0px
+        width: 70%
+        height: 100vh
+        transition: all 0.5s
+        align-items: center
+        z-index: 101
+        display: flex
+        flex-flow: column
+        #cabeceraMenuLateral
+            padding: 5%
+            width: 90%
+            margin-bottom: 5%
+            height: 5%
+            #iconoMenuLateral
+                *border: 1px solid
+                width: 12%
+                @include media(tablet7p)
+                    width:  10%
+                @include media(laptopS)
+                    width: 9%     
+                @include media(laptopM) 
+                    width: 8%
+                @include media(laptopL)
+                    width: 7%        
+            #botonCancelar
+                margin-top: 30%
+                width: 100%
+        @include media(tablet7p)
+            width:  50%       
+        @include media(laptopS)    
+            width: 35%
+        @include media(laptopM) 
+            width: 28%
+        @include media(laptopL)
+            width: 22%      
+        .botonesMenuLateral
+            background-color: white
+            color: $primary-color
+            *box-shadow: 1px 1px 2px #504f4f, 0px 0px 1px #504f4f
+            @include box_shadow(1)
+            margin: 2%
+            padding: 5%
+            width: 60%
+            *border: 5px solid black
+            text-align: center
+            font-size: 0.9rem
+            font-weight: bold
+            @include media(laptopS)  
+                width: 50%
+                font-size: 1.2rem
+            @include media(laptopM) 
+                width: 45%
+            @include media(laptopL)
+                width: 40%        
+main
+    *border: 1px solid
+    display: flex
+    flex-flow: column
+    justify-content: center
+    align-items: center
+    #detallesProyecto
+        display: flex
+        flex-flow: column
+        @include box_shadow(3)
+        width: 90%
+        z-index: 101
+        transform: scale(0,0)
+        top: 5%
+        left: 5%
+        transition: all 0.5s
+        position: fixed
+        background-color: white
+        #salir
+            width: 100%
+            *border: 1px solid
+            img
+                width: 7%
+                padding: 3%
+                *border: 1px solid
+                @include media(tablet7p)
+                    width: 5%
+                @include media(laptopS)
+                    width: 4%
+                    padding: 1.5%
+                @include media(laptopM)
+                    width: 3%
+                    padding: 1% 0% 0% 1%
+        #contenidoDetalles
+            display: flex
+            flex-flow: column
+            justify-content: center
+            align-items: center
+            *padding: 2%
+            *border: 1px solid
+            margin-bottom: 5%
+            color: $text-color
+            @include media(laptopM)
+                margin: 3%
+            #titulo
+                color: $primary-color
+                margin: 5%
+                font-size: 2.1rem
+                @include media(tablet7p)
+                    font-size: 2.3rem
+                    margin: 2.5%
+                @include media(laptopS)
+                    font-size: 2.5rem
+                @include media(laptopM)
+                    font-size: 2.6rem
+                    margin: 1.5%
+                @include media(laptopL)
+                    font-size: 2.8rem
+            #informacion
+                *border: 1px solid
+                width: 90%
+                @include media(tablet7p)
+                    width: 85%
+                @include media(laptopS)
+                    width: 80%
+                    font-size: 1.2rem
+                @include media(laptopM)
+                    font-size: 1.3rem
+                    margin: 1%
+                    width: 70%
+                @include media(laptopL) 
+                    width: 60%
+                    font-size: 1.4rem           
+            img
+                width: 90%
+                margin: 4% 0% 10% 0%
+                @include media(tablet7p)
+                    width: 85%
+                    margin: 3% 0% 8% 0% 
+                @include media(laptopS)
+                    width: 80%
+                    margin: 2.5% 0% 6% 0%
+                    max-height: 35vh
+                @include media(laptopM)
+                    margin: 2% 0% 3% 0%
+                    width: 70%
+                @include media(laptopL)
+                    width: 60% 
+                    *max-height: 30vh
+            #enlacesP
+                *border: 1px solid
+                width: 100% 
+                display: flex
+                flex-flow: row
+                align-items: center
+                justify-content: center 
+                .botonInfo
+                    text-decoration: none  
+                    background-color: $primary-color    
+                    @include box_shadow(1)
+                    width: 40%
+                    margin: 1%
+                    text-align: center
+                    color: #FFF
+                    padding: 1.5%
+                    font-size: 1.2rem 
+                    @include media(tablet7p)
+                        font-size: 1.4rem
+                    @include media(laptopM)
+                        width: 25%
+                        font-size: 1.6rem
+                    @include media(laptopL) 
+                        width: 20%
+                        padding: 1.2%
+                        font-size: 1.8rem 
+    section 
+        display: flex
+        flex-flow: column
+        justify-content: center
+        align-items: center
+        background-color: white
+        min-height: 25vh
+        width: 90%
+        @include box_shadow(3)
+        margin: 2% 0% 
+        padding: 5% 0%      
+        .tituloSeccion
+            color: $primary-color
+            text-align: center
+            font-size: 2rem
+            @include media(tablet7p)
+                font-size: 2.4rem
+            @include media(laptopS)    
+                font-size: 2.6rem
+        @include media(tablet7p)
+            width: 87%
+        @include media(laptopS)
+            width: 75%
+            padding: 3% 0%
+        @include media(laptopM) 
+            width: 65%
+            padding: 2% 0% 
+            margin: 1% 0%   
+    #cajaSobreMi        
+        #fotoPerfil
+            width: 35%
+            margin-bottom: 8%
+            @include media(tablet7p)
+                width: 25% 
+                margin-bottom: 5% 
+            @include media(laptopS)
+                width: 20%
+                margin-bottom: 3%  
+            @include media(laptopM)
+                width: 15%
+                margin-bottom: 1%
+            img
+                width: 100% 
+        #textSobreMi
+            color: $text-color
+            width: 80%
+            text-align: justify
+            font-style: italic
+            @include media(tablet7p)
+                width: 65%
+                font-size: 1rem 
+            @include media(laptopS)  
+                width: 60%
+                font-size: 1.1rem
+            @include media(laptopM)
+                width: 45%
+                font-size: 1.2rem
+            #ubicacion
+                text-align: center
+                font-weight: bold
+                font-size: 1.1rem                      
+    #cajaSkills
+        article
+            display: flex
+            flex-flow: column
+            *border: 1px solid
+            *padding-left: 5%
+            margin-top: 4%
+            margin-bottom: 4%  
+            color: $text-color
+            @include media(tablet7p)
+                margin-top: 2% 
+            @include media(laptopS)  
+                width: 42%
+            @include media(laptopS)
+                width: 48%      
+            hr
+                width: 40%
+                margin: 0%
+                height: 3px
+                background-color: #4e4d4d
+                border: none
+                @include media(tablet7p)
+                    width: 35%
+                @include media(laptopS)
+                    width: 90%    
+                @include media(laptopM)       
+                    width: 70%
+            h3
+                margin: 4% 0%
+                color: #4e4d4d
+                font-size: 1.5rem
+                @include media(tablet7p)
+                    margin: 1.5% 0%
+                @include media(laptopS)
+                    font-size: 1.7rem
+                @include media(laptopM) 
+                    font-size: 1.6rem       
+            .logosSkills
+                display: flex
+                flex-flow: row
+                width: 9%
+                img
+                    margin-right: 35% 
+                    width: 100% 
+                    height: 100%
+                @include media(tablet7p)
+                    width: 6%
+                @include media(laptopS)
+                    width: 15%
+                    margin: 4% 0%        
+            .descripcionSkills
+                width: 80%
+                text-align: justify
+                @include media(tablet7p)
+                    width: 50% 
+                @include media(laptopS)
+                    width: 90%
+                @include media(laptopM) 
+                    width: 80%       
+        #skills    
+            padding-left:  6%        
+            @include media(laptopS)  
+                display: flex
+                flex-direction: row 
+                flex-wrap: wrap 
+                justify-content: space-between 
+                padding-left:  8%
+                padding-right: 4%
+    #cajaProyectos
+        display: flex
+        flex-flow: column
+        #proyectos
+            width: 100%
+            *border: 1px solid
+            display: flex
+            flex-flow: row
+            flex-wrap: wrap
+            align-items: center
+            justify-content: center
+            article
+                width: 100%
+                max-height: 20vh
+                margin: 3%
+                display: flex
+                flex-flow: column
+                align-items: center
+                justify-content: center 
+                color: white
+                *border: 1px solid blue
+                @include media(tablet7p)
+                    width: 85%
+                    min-height: 25vh
+                @include media(laptopS) 
+                    width: 80%  
+                    min-height: 30vh
+                @include media(laptopM)  
+                    width: 45%
+                    margin: 2% 1% 0% 1%
+                    min-height: 20vh
+        article
+            background-size: 100% 100%
+            .coverProyecto
+                background-color: $primary-color-transparent
+                text-align: center
+                opacity: 0
+                -webkit-transition: opacity 0.5s ease
+                -moz-transition: opacity 0.5s ease
+                min-width: 100%
+                min-height: 20vh
+                @include media(tablet7p)
+                    min-height: 25vh 
+                @include media(laptopS) 
+                    min-height: 30vh
+                @include media(laptopM) 
+                    min-height: 20vh
+            &:hover .coverProyecto
+                opacity: 1
+            .verMas
+                font-size: 1.2rem 
+                @include media(tablet7p)
+                    font-size: 1.4rem
+                @include media(laptopS)
+                    font-size: 1.6rem   
+                @include media(laptopM) 
+                    font-size: 1.7rem
+                @include media(laptopL)
+                    font-size: 1.9rem          
+                h4
+                    font-size: 1.5rem
+                    *color: $primary-color
+                    @include media(tablet7p)
+                        font-size: 2rem
+                    @include media(laptopS) 
+                        font-size: 2.3rem
+                    @include media(laptopM)
+                        font-size: 2rem 
+                    @include media(laptopM)
+                        font-size: 2.3rem           
+                p
+                    text-decoration: underline            
+        #pBlog
+            background-image: url("../images/Proyecto1.png")
+            background-size: cover     
+        #pGestorNotas
+            background-image: url("../images/Proyecto2.png")
+            background-size: cover 
+        #pCasas
+            background-image: url("../images/Proyecto3.png")
+            background-size: cover
+        #pMasterMind           
+            background-image: url("../images/Proyecto4.png")
+            background-size: cover
+
+    #cajaContacto
+        #camposFormulario
+            *border: 1px solid
+            display: flex
+            flex-flow: column
+            width: 100%
+            max-width: 500px
+            form
+                *border: 1px solid blue
+                width: 100%
+                div
+                    display: flex
+                    flex-flow: column
+                    justify-content: space-between
+                    margin: 10%
+                    input
+                        margin: 2%
+                        border: none
+                        outline: none
+                        margin-top: 3%
+                        border-bottom: 2px solid $primary-color
+                        transition: transform 0.5s
+                        &:focus
+                            text-align: justify
+                            border: none
+                            border-bottom: 3px solid $primary-color
+                            transform: scale(1.05,1)
+                #cajaComentario
+                    display: flex
+                    flex-flow: column
+                    justify-content: space-between 
+                    *border: 1px solid
+                    textarea
+                        *margin: 2%
+                        margin-top: 3%
+                        border: 1px solid $primary-color
+                        width: 97%
+                        height: 100px
+                        resize: none
+                .botonArticulo
+                    background-color: $primary-color
+                    text-decoration: none
+                    @include box_shadow(2)
+                    input
+                        background-color: $primary-color 
+                        color: #FFF
+                        padding: 1%           
+footer
+    display: flex
+    flex-flow: row
+    justify-content: space-between
+    align-items: center
+    background-color: $primary-color
+    color: white
+    min-height: 80px
+    text-align: center
+    padding: 2% 4%
+    font-size: 0.8rem
+    margin-top: 2%
+    #imagenesFooter
+        width: 20%
+        img
+            width: 80%
+            @include media(laptopS) 
+                max-width: 120px   
+    #redesSocialesFooter
+        width: 20%
+        display: flex
+        flex-flow: row
+        .rsFooter
+            width: 40%
+            a
+                img
+                    width: 90%
+                    @include media(laptopS)
+                        width: 80%
+                    @include media(laptopM)
+                        width: 80% 
+                    @include media(laptopL)
+                        width: 75%    
+            @include media(laptopM)
+                width: 25%
+            @include media(laptopL)
+                width: 23%    
+    @include media(tablet7p)
+        font-size: 1.4rem
+    @include media(laptopS)
+        font-size: 1.6rem  
+    @include media(laptopM)         
+        font-size: 1.8rem    
+    
